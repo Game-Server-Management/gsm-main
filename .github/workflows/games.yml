@@ -1,0 +1,48 @@
+name: GSM Games Builder
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  gamebuilders:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-20.04 ]
+        go: [ '^1.16' ]
+        goos: [ linux ]
+        goarch: [ amd64, arm64 ]
+        games: [ sampserver ]
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go v${{ matrix.go }}
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ matrix.go }}
+
+    - name: Build
+      env:
+        GOOS: ${{ matrix.goos }}
+        GOARCH: ${{ matrix.goarch }}
+        CGO_ENABLED: 0
+        SRC_PATH: github.com/Game-Server-Management/gsm-main
+      run: go build -trimpath -o build/${{matrix.games}}_${GOOS}_${GOARCH} -v games/${{matrix.games}}/main.go
+
+    - name: Upload Release Artifact
+      uses: actions/upload-artifact@v2
+      if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'commit' }}
+      with:
+        name: ${{matrix.games}}_${{ matrix.goos }}_${{ matrix.goarch }}
+        path: build/${{matrix.games}}_${{ matrix.goos }}_${{ matrix.goarch }}
+
+    - name: Commit Files
+      uses: EndBug/add-and-commit@v9
+      with:
+        add: "build"
+        message: "upload: Build Executables"
+        pull: '--rebase --autostash'
