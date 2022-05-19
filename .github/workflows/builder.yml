@@ -42,5 +42,5 @@ jobs:
     - name: Commit Files
       uses: swinton/commit@v2.0.0
       with:
-        files: "./build"
+        files: "build"
         commit-message: "upload: Build Executables"
