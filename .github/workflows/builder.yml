@@ -40,7 +40,7 @@ jobs:
         path: build/gamemanager_${{ matrix.goos }}_${{ matrix.goarch }}
 
     - name: Commit Files
-      uses: swinton/commit@v2.0.0
+      uses: EndBug/add-and-commit@v9
       with:
-        files: "build"
-        commit-message: "upload: Build Executables"
+        add: "build"
+        message: "upload: Build Executables"
