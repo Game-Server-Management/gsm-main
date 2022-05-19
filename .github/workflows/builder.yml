@@ -44,3 +44,4 @@ jobs:
       with:
         add: "build"
         message: "upload: Build Executables"
+        pull: '--rebase --autostash ...'
