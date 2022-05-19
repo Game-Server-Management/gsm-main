@@ -23,7 +23,7 @@ var installCmd = &cobra.Command{
 
 func installExecuteCommand(cmd *cobra.Command, args []string) {
 	if !utilities.FileExists(config.ConfigPath) {
-		fmt.Printf("%s(!)%s Configuration file already exists. Use %s%s config update%s to update the configuration.\n", color.Red, color.Reset, color.Green, filepath.Base(os.Args[0]), color.Reset)
+		fmt.Printf("%s(!)%s Configuration file doesn't exists. Use %s%s config init%s to create the configuration.\n", color.Red, color.Reset, color.Green, filepath.Base(os.Args[0]), color.Reset)
 		return
 	}
 
