@@ -48,4 +48,5 @@ func InstallExecutable(game string) {
 		panic(err)
 	}
 
+	fmt.Printf("The %s%s's%s executable has been succesfully downloaded. To install the game use: \n\n%s./%s install%s\n", color.Green, game, color.Reset, color.Green, filepath.Base(executablePath), color.Reset)
 }
