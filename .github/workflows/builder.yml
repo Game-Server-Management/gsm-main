@@ -30,7 +30,7 @@ jobs:
         GOARCH: ${{ matrix.goarch }}
         CGO_ENABLED: 0
         SRC_PATH: github.com/Game-Server-Management/gsm-main
-      run: go build -o -trimpath build/gamemanager_${GOOS}_${GOARCH} -v main.go
+      run: go build -trimpath -o build/gamemanager_${GOOS}_${GOARCH} -v main.go
 
     - name: Upload Release Artifact
       uses: actions/upload-artifact@v2
