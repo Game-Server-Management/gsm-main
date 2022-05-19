@@ -48,5 +48,5 @@ func installExecuteCommand(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	games.InstallGame(game)
+	games.InstallExecutable(game)
 }

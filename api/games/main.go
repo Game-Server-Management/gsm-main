@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"gsm/api"
 	"gsm/utilities"
+	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/TwiN/go-color"
@@ -31,6 +33,19 @@ func LoadGames() {
 	}
 }
 
-func InstallGame(game string) {
+func InstallExecutable(game string) {
+	executablePath := fmt.Sprintf("%s/%s", filepath.Dir(os.Args[0]), game)
+	if utilities.FileExists(executablePath) {
+		i := 1
+		for utilities.FileExists(fmt.Sprintf("%s/%s-%d", filepath.Dir(os.Args[0]), game, i)) {
+			i++
+		}
+		executablePath = fmt.Sprintf("%s-%d", executablePath, i)
+	}
+
+	err := utilities.DownloadFile(executablePath, fmt.Sprintf("%s/%s_%s_%s", api.ExecutablesURL, game, utilities.OS, utilities.Arch), 0755)
+	if err != nil {
+		panic(err)
+	}
 
 }
