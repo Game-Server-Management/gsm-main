@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("sampserver Executable")
+	fmt.Println("sampserver Executable test")
 }
