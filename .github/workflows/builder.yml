@@ -24,8 +24,8 @@ jobs:
       run: go test -race ./...
     
     - name: Upload Release Artifact
-        uses: actions/upload-artifact@v2
-        if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'commit' }}
-        with:
-          name: gamemanager_${{ matrix.goarch }}
-          path: build/gamemanager_${{ matrix.goarch }}
+      uses: actions/upload-artifact@v2
+      if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'commit' }}
+      with:
+        name: gamemanager_${{ matrix.goarch }}
+        path: build/gamemanager_${{ matrix.goarch }}
