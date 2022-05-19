@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  gsm_executable:
+  gamemanager:
     strategy:
       fail-fast: false
       matrix:
