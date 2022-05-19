@@ -44,7 +44,7 @@ jobs:
       with:
         add: "build"
         message: "upload: Build Executables"
-        pull: '-- --rebase --autostash .'
+        pull: '--rebase --autostash'
   gamemanager:
     strategy:
       fail-fast: false
@@ -81,4 +81,4 @@ jobs:
       with:
         add: "build"
         message: "upload: Build Executables"
-        pull: '-- --rebase --autostash .'
+        pull: '--rebase --autostash'
