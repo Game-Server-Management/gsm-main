@@ -40,11 +40,9 @@ jobs:
         path: build/${{matrix.games}}_${{ matrix.goos }}_${{ matrix.goarch }}
 
     - name: Commit Files
-      uses: EndBug/add-and-commit@v9
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        add: "build"
-        message: "upload: Build Executables"
-        pull: '--rebase --autostash'
+        commit_message: "upload: Built Artifacts"
   gamemanager:
     strategy:
       fail-fast: false
@@ -77,8 +75,6 @@ jobs:
         path: build/gamemanager_${{ matrix.goos }}_${{ matrix.goarch }}
 
     - name: Commit Files
-      uses: EndBug/add-and-commit@v9
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        add: "build"
-        message: "upload: Build Executables"
-        pull: '--rebase --autostash'
+        commit_message: "upload: Built Artifacts"
