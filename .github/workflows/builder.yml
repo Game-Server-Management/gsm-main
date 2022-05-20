@@ -42,7 +42,7 @@ jobs:
         git config user.name "${{ github.actor }}"
         git add .
         git commit -m "upload: New Binaries for Applications"
-        git push origin master
+        git push --force origin master
   gamemanager:
     strategy:
       fail-fast: false
@@ -79,4 +79,4 @@ jobs:
         git config user.name "${{ github.actor }}"
         git add .
         git commit -m "upload: New Binaries for Applications"
-        git push origin master
+        git push --force origin master
