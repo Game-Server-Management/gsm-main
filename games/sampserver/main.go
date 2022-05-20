@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"gsm/config"
+	common_commands "gsm/games/dev/common/commands"
 	"gsm/utilities"
 	"os"
 	"path/filepath"
@@ -17,4 +18,6 @@ func main() {
 	}
 
 	config.Init()
+
+	common_commands.InitCommands()
 }
